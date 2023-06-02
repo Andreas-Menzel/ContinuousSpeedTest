@@ -1,4 +1,4 @@
-# ContinuousSpeedTest
+# InternetSpeedLogger
 
 ## Python Script for Testing the Speed of your Internet Connection
 
