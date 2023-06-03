@@ -24,7 +24,7 @@ from speedtest import Speedtest
 from time import sleep
 
 
-script_version = '1.1.0'
+script_version = '1.1.1'
 
 
 def argparse_check_positive(value):
@@ -63,7 +63,7 @@ Default location of the log-file:
                         type=int,
                         default=0)
     parser.add_argument('-l', '--log_file',
-                        help='Filename for the log-file. NOTE: ".csv" will be automatically appended to the filename!',
+                        help='Filename for the log-file. NOTE: The file will be overwritten if it already exists. NOTE: ".csv" will be automatically appended to the filename!',
                         default='')
     return parser.parse_args()
 
@@ -108,7 +108,7 @@ Log-file: "{csv_file.absolute()}"\
         upload = st.upload()
         print(f'{round(upload / 1000000)} Mbps')
 
-        with open(csv_file, mode='w') as file:
+        with open(csv_file, mode='a') as file:
             writer = csv.writer(file)
             writer.writerow([
                 testing_timestamp,
