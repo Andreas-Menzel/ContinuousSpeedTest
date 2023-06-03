@@ -8,36 +8,58 @@ logs the results in a CSV file. It uses the
 internet speed. You can control the frequency of testing and duration of the
 entire test run via the script's parameters.
 
-## Dependencies
+## Installation
 
-The script relies on the
-[speedtest-cli](https://pypi.org/project/speedtest-cli/) library to measure the
-internet speed.
-
-If you are installing InternetSpeedLogger manually, make sure that you have
-already installed all requirements:
+Just install using pip:
 
 ```bash
-pip install -r requirements.txt
+pip install InternetSpeedLogger
 ```
 
 ## Usage
 
-Simply run the script using Python 3:
+If you installed InternetSpeedLogger with pip, you should be able to simply
+execute the script from anywhere:
 
 ```bash
-python3 InternetSpeedTest.py
+InternetSpeedLogger
 ```
 
-You can configure the script by modifying the following variables:
+Type `InternetSpeedLogger --help` to get detailed execution information:
 
-- **interval_in_secs**: The frequency of testing in seconds. Make sure that the
-  interval is not shorter than the time needed for a single test.
-- **testing_duration_secs**: The total duration of the test run in seconds. The
-  script will automatically terminate after this duration. Set it to `<= 0` for
-  an infinite duration.
-- **csv_file**: The filename of the CSV file in which the test results will be
-  logged.
+```
+usage: InternetSpeedLogger [-h] [--version] [-i INTERVAL] [-d DURATION]
+                           [-l LOG_FILE]
+
+A Python script that continuously monitors and logs your internet
+speed. It tests both download and upload speeds at regular intervals
+and records the data in a CSV file for easy analysis and tracking.
+Ideal for auditing your network performance or ISP reliability over
+time.
+            
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -i INTERVAL, --interval INTERVAL
+                        Testing interval in seconds. Make sure that the
+                        interval is not shorter than the time needed for
+                        testing. (default: 60)
+  -d DURATION, --duration DURATION
+                        Duration of the entire test runs. The script will
+                        automatically end after this duration. Set to <= 0 for
+                        infinite. (default: 0)
+  -l LOG_FILE, --log_file LOG_FILE
+                        Filename for the log-file. NOTE: ".csv" will be
+                        automatically appended to the filename!
+
+Default location of the log-file:
+    A .csv-file will be created, which will contain all logged information.
+    Default Filename: "YYYY-MM-DD_HH:MM:SS_internet_speeds.csv"
+    Default Location: typically "/home/<username>" on Linux
+                      typically "C:\Users\<username>" on Windows
+                      typically "/Users/<username>" on macOS
+```
 
 ## Contribution
 
