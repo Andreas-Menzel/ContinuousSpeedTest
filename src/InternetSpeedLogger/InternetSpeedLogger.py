@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# -------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # InternetSpeedLogger
 #
 # A Python script that continuously monitors and logs your internet speed. It
@@ -10,10 +10,10 @@
 #
 # https://github.com/Andreas-Menzel/InternetSpeedLogger
 # https://pypi.org/project/InternetSpeedLogger/
-# -------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # @author: Andreas Menzel
 # @license: MIT License
-# -------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 import argparse
 import csv

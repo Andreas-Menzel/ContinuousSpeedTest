@@ -90,7 +90,7 @@ In your pull request, provide a clear and comprehensive explanation of your
 changes and their necessity. This will help us understand the purpose of your
 contribution and expedite the review process.
 
-Thank you for your interest in improving InternetSpeedDataLogger! :heart:
+Thank you for your interest in improving InternetSpeedLogger! :heart:
 
 ## License
 
