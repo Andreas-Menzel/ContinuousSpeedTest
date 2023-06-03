@@ -6,11 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "InternetSpeedLogger"
 version = "1.0.1"
 dependencies = [
-    "csv",
-    "datetime",
-    "signal",
-    "speedtest_cli",
-    "time"
+    "speedtest_cli"
 ]
 authors = [
   { name="Andreas Menzel", email="mail@andreas-menzel.com" },
@@ -29,6 +25,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[project.scripts]
+InternetSpeedLogger = "InternetSpeedLogger.InternetSpeedLogger:main"
 
 [project.urls]
 "Repository" = "https://github.com/Andreas-Menzel/InternetSpeedLogger"
