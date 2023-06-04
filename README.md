@@ -28,8 +28,7 @@ InternetSpeedLogger
 Type `InternetSpeedLogger --help` to get detailed execution information:
 
 ```
-usage: InternetSpeedLogger [-h] [--version] [-i INTERVAL] [-d DURATION]
-                           [-l LOG_FILE]
+usage: InternetSpeedLogger [-h] [--version] [-i INTERVAL] [-d DURATION] [-l LOG_FILE]
 
 A Python script that continuously monitors and logs your internet
 speed. It tests both download and upload speeds at regular intervals
@@ -42,23 +41,18 @@ options:
   -h, --help            show this help message and exit
   --version             show program's version number and exit
   -i INTERVAL, --interval INTERVAL
-                        Testing interval in seconds. Make sure that the
-                        interval is not shorter than the time needed for
-                        testing. (default: 60)
+                        Testing interval in seconds. Make sure that the interval is not shorter than the time needed for testing. (default: 60)
   -d DURATION, --duration DURATION
-                        Duration of the entire test runs. The script will
-                        automatically end after this duration. Set to <= 0 for
-                        infinite. (default: 0)
+                        Duration of the entire test runs. The script will automatically end after this duration. Set to <= 0 for infinite. (default: 0)
   -l LOG_FILE, --log_file LOG_FILE
-                        Filename for the log-file. NOTE: ".csv" will be
-                        automatically appended to the filename!
+                        Filename for the log-file. NOTE: A similar filename will be chosen if a file with this name already exists.
 
 Default location of the log-file:
     A .csv-file will be created, which will contain all logged information.
     Default Filename: "YYYY-MM-DD_HH:MM:SS_internet_speeds.csv"
-    Default Location: typically "/home/<username>" on Linux
-                      typically "C:\Users\<username>" on Windows
-                      typically "/Users/<username>" on macOS
+    Default Location: <tmp_dir>/InternetSpeedLogger/
+        <tmp_dir> on Windows: C:\TEMP, C:\TMP, \TEMP, or \TMP, in that order
+        <tmp_dir> on all other: /tmp, /var/tmp, or /usr/tmp, in that order
 ```
 
 ## Contribution
