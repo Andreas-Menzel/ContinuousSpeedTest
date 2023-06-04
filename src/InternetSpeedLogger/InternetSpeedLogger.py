@@ -66,7 +66,7 @@ Default location of the log-file:
                         type=int,
                         default=0)
     parser.add_argument('-l', '--log_file',
-                        help='Filename for the log-file. NOTE: The file will be overwritten if it already exists. NOTE: ".csv" will be automatically appended to the filename!',
+                        help='Filename for the log-file. NOTE: The file will be overwritten if it already exists.',
                         default='')
     return parser.parse_args()
 
@@ -77,7 +77,10 @@ def main():
     st = Speedtest()
 
     if args.log_file != '':
-        csv_file = Path(f'{args.log_file}.csv')
+        if len(args.log_file) > 4 and args.log_file[-4:] == '.csv':
+            csv_file = Path(f'{args.log_file}')
+        else:
+            csv_file = Path(f'{args.log_file}.csv')
     else:
         # Set to default/fallback location.
         csv_file = Path(
