@@ -21,6 +21,7 @@ from datetime import datetime
 from pathlib import Path
 from signal import signal, SIGINT
 from speedtest import Speedtest
+from tempfile import gettempdir
 from time import sleep
 
 
@@ -30,8 +31,10 @@ script_version = '1.1.1'
 def argparse_check_positive(value):
     ivalue = int(value)
     if ivalue <= 0:
-        raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
+        raise argparse.ArgumentTypeError(
+            "%s is an invalid positive int value" % value)
     return ivalue
+
 
 def setupArgumentParser():
     parser = argparse.ArgumentParser(
@@ -47,9 +50,9 @@ time.
 Default location of the log-file:
     A .csv-file will be created, which will contain all logged information.
     Default Filename: "YYYY-MM-DD_HH:MM:SS_internet_speeds.csv"
-    Default Location: typically "/home/<username>" on Linux
-                      typically "C:\\Users\\<username>" on Windows
-                      typically "/Users/<username>" on macOS
+    Default Location: <tmp_dir>/InternetSpeedLogger/
+        <tmp_dir> on Windows: C:\\TEMP, C:\\TMP, \\TEMP, or \\TMP, in that order
+        <tmp_dir> on all other: /tmp, /var/tmp, or /usr/tmp, in that order
             """,
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--version', action='version',
@@ -78,7 +81,7 @@ def main():
     else:
         # Set to default/fallback location.
         csv_file = Path(
-            f'{Path.home().joinpath(datetime.now().strftime("%Y-%m-%d_%H:%M:%S"))}_internet_speeds.csv')
+            f'{Path(gettempdir(), "InternetSpeedLogger", datetime.now().strftime("%Y-%m-%d_%H:%M:%S"))}_internet_speeds.csv')
 
     print(f"""\
 InternetSpeedLogger (version {script_version})
