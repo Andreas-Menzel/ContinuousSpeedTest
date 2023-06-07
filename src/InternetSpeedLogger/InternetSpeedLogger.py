@@ -25,7 +25,7 @@ from tempfile import gettempdir
 from time import sleep
 
 
-script_version = '1.2.0'
+script_version = '1.3.0'
 
 
 def argparse_check_positive(value):
