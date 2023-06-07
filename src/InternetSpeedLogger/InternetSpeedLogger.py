@@ -8,7 +8,7 @@
 # data in a CSV file for easy analysis and tracking. Ideal for auditing your
 # network performance or ISP reliability over time.
 #
-# https://github.com/Andreas-Menzel/InternetSpeedLogger
+# https://github.com/Andreas-Menzel/InternetSpeedLogger/
 # https://pypi.org/project/InternetSpeedLogger/
 # ------------------------------------------------------------------------------
 # @author: Andreas Menzel
@@ -102,7 +102,7 @@ def main():
 InternetSpeedLogger (version {script_version})
 
 Testing interval: {args.interval} s
-Testing duration: {args.duration} s
+Testing duration: {str(args.duration) + ' s' if args.duration > 0 else 'infinite'}
 Log-file: "{csv_file.absolute()}"\
     """)
 
