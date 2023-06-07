@@ -6,6 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "InternetSpeedLogger"
 version = "1.2.0"
 dependencies = [
+    "matplotlib",
+    "pandas",
     "speedtest_cli"
 ]
 authors = [
