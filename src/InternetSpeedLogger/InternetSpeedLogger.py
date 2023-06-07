@@ -68,6 +68,9 @@ Default location of the log-file:
     parser.add_argument('-l', '--log_file',
                         help='Filename for the log-file. NOTE: A similar filename will be chosen if a file with this name already exists.',
                         default='')
+    parser.add_argument('-no', '--no_overwrite',
+                        help='Set this flag to automatically select a similar log-filename, so a potentially already existing file will not be overwritten.',
+                        action='store_true')
     return parser.parse_args()
 
 
@@ -88,15 +91,18 @@ def main():
             f'{Path(gettempdir(), "InternetSpeedLogger", datetimeString)}_internet_speeds.csv')
 
     # Make sure that the log-file is unique and does not exist yet.
-    if csv_file.exists():
-        csv_file = Path(csv_file.parent, f'{csv_file.stem}_{datetimeString}{csv_file.suffix}')
-    if csv_file.exists():
-        counter = 2
-        new_csv_file = csv_file
-        while new_csv_file.exists():
-            new_csv_file = Path(csv_file.parent, f'{csv_file.stem}_{counter}{csv_file.suffix}')
-            counter = counter + 1
-        csv_file = new_csv_file
+    if args.no_overwrite or args.log_file == '':
+        if csv_file.exists():
+            csv_file = Path(csv_file.parent,
+                            f'{csv_file.stem}_{datetimeString}{csv_file.suffix}')
+        if csv_file.exists():
+            counter = 2
+            new_csv_file = csv_file
+            while new_csv_file.exists():
+                new_csv_file = Path(
+                    csv_file.parent, f'{csv_file.stem}_{counter}{csv_file.suffix}')
+                counter = counter + 1
+            csv_file = new_csv_file
 
     print(f"""\
 InternetSpeedLogger (version {script_version})
